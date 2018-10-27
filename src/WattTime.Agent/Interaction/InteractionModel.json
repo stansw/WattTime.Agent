@@ -1,3 +1,101 @@
-﻿{
-
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "watttime",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CanITurnOn",
+                    "slots": [
+                        {
+                            "name": "appliance",
+                            "type": "appliance"
+                        },
+                        {
+                            "name": "action",
+                            "type": "action"
+                        }
+                    ],
+                    "samples": [
+                        "can i turn on {appliance}",
+                        "If I can turn on the {appliance} now"
+                    ]
+                },
+                {
+                    "name": "WhenCanITurnOn",
+                    "slots": [
+                        {
+                            "name": "action",
+                            "type": "action"
+                        },
+                        {
+                            "name": "appliance",
+                            "type": "appliance"
+                        }
+                    ],
+                    "samples": [
+                        "When can I use the {appliance}",
+                        "When can I use {appliance}",
+                        "When can I {action}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "appliance",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "iron"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "oven"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dryer"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "action",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "press my clothes"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dry my clothes"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
 }
