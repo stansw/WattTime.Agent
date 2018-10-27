@@ -1,9 +1,9 @@
 # Scenario: Client generation
 
 ``` yaml 
-input-file: SkillAddressInformationClient.json
+input-file: WattTime.json
 
 csharp:
   namespace: WattTime.Agent.Services.Client
-  output-folder: SkillAddressInformationClient
+  output-folder: WattTimeClient
 ```

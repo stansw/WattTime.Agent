@@ -1,0 +1,134 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "WattTime Client",
+    "version": "1.0.0"
+  },
+  "host": "api2.watttime.org",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v2/login": {
+      "get": {
+        "operationId": "getToken",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the country/region and postal code associated with the deviceId.",
+            "schema": {
+              "$ref": "#/definitions/Token"
+            }
+          },
+          "401": {
+            "description": "Authentication failed or user doesn't have permissions for requested operation."
+          }
+        }
+      }
+    },
+    "/v2/index": {
+      "get": {
+        "operationId": "getIndex",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ba",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "style",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "percent",
+              "rating",
+              "switch"
+            ]
+          }
+
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successful",
+            "schema": {
+              "$ref": "#/definitions/Index"
+            }
+          },
+          "400": {
+            "description": "The request could not be understood or was missing required parameters."
+          },
+          "401": {
+            "description": "Authentication failed or user doesn't have permissions for requested operation."
+          },
+          "403": {
+            "description": "Access denied."
+          },
+          "404": {
+            "description": "Resource was not found."
+          },
+          "405": {
+            "description": "Requested method is not supported for resource."
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Token": {
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "Index": {
+      "properties": {
+        "ba": {
+          "type": "string"
+        },
+        "validFor": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "rating": {
+          "type": "string"
+        },
+        "switch": {
+          "type": "string"
+        },
+        "percent": {
+          "type": "string"
+        },
+        "freq": {
+          "type": "string"
+        },
+        "market": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

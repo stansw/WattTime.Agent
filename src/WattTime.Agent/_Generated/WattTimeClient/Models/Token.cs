@@ -9,23 +9,22 @@ namespace WattTime.Agent.Services.Client.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class CountryAndPostalCode
+    public partial class Token
     {
         /// <summary>
-        /// Initializes a new instance of the CountryAndPostalCode class.
+        /// Initializes a new instance of the Token class.
         /// </summary>
-        public CountryAndPostalCode()
+        public Token()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CountryAndPostalCode class.
+        /// Initializes a new instance of the Token class.
         /// </summary>
-        public CountryAndPostalCode(string countryCode = default(string), string postalCode = default(string))
+        public Token(string tokenProperty = default(string))
         {
-            CountryCode = countryCode;
-            PostalCode = postalCode;
+            TokenProperty = tokenProperty;
             CustomInit();
         }
 
@@ -36,13 +35,8 @@ namespace WattTime.Agent.Services.Client.Models
 
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "countryCode")]
-        public string CountryCode { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "postalCode")]
-        public string PostalCode { get; set; }
+        [JsonProperty(PropertyName = "token")]
+        public string TokenProperty { get; set; }
 
     }
 }

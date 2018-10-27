@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace VocalSurvey.Core.Skill
+namespace WattTime.Agent.Services.Client
 {
     using Models;
     using System.Threading;

@@ -16,7 +16,7 @@ namespace WattTime.Agent.Services.Client
 
     /// <summary>
     /// </summary>
-    public partial interface ISkillAddressInformationClient : System.IDisposable
+    public partial interface IWattTimeClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.
@@ -34,7 +34,18 @@ namespace WattTime.Agent.Services.Client
         JsonSerializerSettings DeserializationSettings { get; }
 
 
-        /// <param name='deviceId'>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<HttpOperationResponse<Token>> GetTokenWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <param name='ba'>
+        /// </param>
+        /// <param name='style'>
+        /// Possible values include: 'percent', 'rating', 'switch'
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -42,7 +53,7 @@ namespace WattTime.Agent.Services.Client
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<CountryAndPostalCode>> GetCountryAndPostalCodeWithHttpMessagesAsync(string deviceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<Index>> GetIndexWithHttpMessagesAsync(string ba, string style, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }
