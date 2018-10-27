@@ -31,13 +31,13 @@
                             "type": "appliance"
                         },
                         {
-                            "name": "action",
-                            "type": "action"
+                            "name": "postalCode",
+                            "type": "AMAZON.PostalAddress"
                         }
                     ],
                     "samples": [
                         "can i turn on {appliance}",
-                        "If I can turn on the {appliance} now"
+                        "can I turn on the {appliance} now"
                     ]
                 },
                 {
@@ -96,6 +96,66 @@
                     ]
                 }
             ]
-        }
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CanITurnOn",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "appliance",
+                            "type": "appliance",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "postalCode",
+                            "type": "AMAZON.PostalAddress",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.885869860141.959677275017"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1361117642501.47716289638",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please, tell me wich one is your zip code?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.885869860141.1347395507448",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What you want to turn on?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.885869860141.959677275017",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which one is your zip code?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Please, tell me your zipcode?"
+                    }
+                ]
+            }
+        ]
     }
 }
