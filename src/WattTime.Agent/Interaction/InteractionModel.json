@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "watttime",
+            "invocationName": "carbon tracker",
             "intents": [
                 {
                     "name": "AMAZON.FallbackIntent",
@@ -32,7 +32,10 @@
                         },
                         {
                             "name": "postalCode",
-                            "type": "AMAZON.PostalAddress"
+                            "type": "AMAZON.PostalAddress",
+                            "samples": [
+                                "my zip code is {postalCode}"
+                            ]
                         }
                     ],
                     "samples": [
@@ -50,6 +53,13 @@
                         {
                             "name": "appliance",
                             "type": "appliance"
+                        },
+                        {
+                            "name": "postalCode",
+                            "type": "AMAZON.PostalAddress",
+                            "samples": [
+                                "my zip code is {postalCode}"
+                            ]
                         }
                     ],
                     "samples": [
@@ -121,6 +131,36 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "WhenCanITurnOn",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "action",
+                            "type": "action",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "appliance",
+                            "type": "appliance",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "postalCode",
+                            "type": "AMAZON.PostalAddress",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1387613863230.203869047004"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -153,6 +193,15 @@
                     {
                         "type": "PlainText",
                         "value": "Please, tell me your zipcode?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1387613863230.203869047004",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please, Tell me your zip code"
                     }
                 ]
             }
