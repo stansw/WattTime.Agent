@@ -1,0 +1,76 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Skill Address Information Client",
+    "version": "1.0.0"
+  },
+  "host": "api.amazonalexa.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/devices/{deviceId}/settings/address/countryAndPostalCode": {
+      "get": {
+        "operationId": "getCountryAndPostalCode",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the country/region and postal code associated with the deviceId.",
+            "schema": {
+              "$ref": "#/definitions/CountryAndPostalCode"
+            }
+          },
+          "204": {
+            "description" : "The query did not return any results."
+          },
+          "403": {
+            "description" : "The authentication token is invalid or doesn't have access to the resource."
+          },
+          "405": {
+            "description" : "The method is not supported."
+          },
+          "429": {
+            "description" : "The skill has been throttled due to an excessive number of requests."
+          },
+          "500": {
+            "description" : "An unexpected error occurred."
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "CountryAndPostalCode": {
+      "properties": {
+        "countryCode": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
