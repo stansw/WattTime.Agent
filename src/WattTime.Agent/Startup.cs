@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Alexa.NET.Security.Middleware;
 
 namespace WattTime.Agent
 {
@@ -32,6 +33,10 @@ namespace WattTime.Agent
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseAlexaRequestValidation();
             }
 
             app.UseMvc();
